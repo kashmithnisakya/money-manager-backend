@@ -1,1 +1,1 @@
-# fastapi-social-media-backend
+# Money Manager Fast-api Backend
