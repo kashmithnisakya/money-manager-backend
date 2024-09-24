@@ -3,10 +3,8 @@ from sqlalchemy.orm import Session
 from app import models, schemas, utils, crud
 from app.database import get_db
 
-router = APIRouter(
-    prefix="/users",
-    tags=['Users']
-)
+router = APIRouter(prefix="/users", tags=["Users"])
+
 
 @router.post("/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
