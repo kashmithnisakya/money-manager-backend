@@ -6,3 +6,4 @@ Dockerfile
 Procfile
 nginx
 gunicorn.service
+money_manager.db
