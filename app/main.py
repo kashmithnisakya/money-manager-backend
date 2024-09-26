@@ -2,7 +2,7 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import models
-from app.routers import user, auth
+from app.routers import expense, user, auth
 from app.database import engine
 
 app = FastAPI()
@@ -21,3 +21,4 @@ app.add_middleware(
 
 app.include_router(user.router)
 app.include_router(auth.router)
+app.include_router(expense.router)
