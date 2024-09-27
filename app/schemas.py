@@ -1,6 +1,16 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
+from enum import Enum
+
+
+class Tag(str, Enum):
+    FOOD = "food"
+    TRANSPORT = "transport"
+    SHOPPING = "shopping"
+    ENTERTAINMENT = "entertainment"
+    HEALTH = "health"
+    OTHER = "other"
 
 
 class UserBase(BaseModel):
@@ -21,16 +31,19 @@ class User(UserBase):
 
 
 class ExpenseBase(BaseModel):
-    amount: int
+    tag: Tag
+    amount: float
     description: str
-    
+
+
 class ExpenseCreate(ExpenseBase):
     pass
-    
-    
+
+
 class Expense(ExpenseBase):
     id: str
     user_id: str
+    tag: Tag
     created_at: datetime
 
     class Config:

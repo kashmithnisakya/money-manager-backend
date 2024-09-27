@@ -23,6 +23,7 @@ class Expense(Base):
 
     id = Column(String, primary_key=True, default=uuid4().hex, index=True)
     user_id = Column(String, ForeignKey("users.id"))
+    tag = Column(String)
     amount = Column(Integer)
     description = Column(String)
     created_at = Column(TIMESTAMP, default=datetime.now(timezone.utc), nullable=False)
