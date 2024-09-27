@@ -23,7 +23,7 @@ def create_user(db: Session, user: schemas.UserCreate):
     db.refresh(db_user)
     return db_user
 
-def create_expense(db: Session, expense: schemas.ExpenseCreate, user_id: int):
+def create_expense(db: Session, expense: schemas.ExpenseCreate, user_id: str):
     db_expense = models.Expense(**expense.model_dump(), user_id=user_id)
     db.add(db_expense)
     db.commit()

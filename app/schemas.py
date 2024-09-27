@@ -12,7 +12,7 @@ class UserCreate(UserBase):
 
 
 class User(UserBase):
-    id: int
+    id: str
     is_active: bool
     created_at: datetime
 
@@ -29,8 +29,8 @@ class ExpenseCreate(ExpenseBase):
     
     
 class Expense(ExpenseBase):
-    id: int
-    user_id: int
+    id: str
+    user_id: str
     created_at: datetime
 
     class Config:
@@ -43,4 +43,4 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    id: Optional[int] = None
+    id: Optional[str] = None
