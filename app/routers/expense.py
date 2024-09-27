@@ -8,3 +8,8 @@ router = APIRouter(prefix="/expense", tags=["Expenses"])
 @router.post("", response_model=schemas.Expense)
 def create_expense(expense: schemas.ExpenseBase, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
     return crud.create_expense(db=db, expense=expense, user_id=current_user.id)
+
+@router.get("", response_model=list[schemas.Expense])
+def read_expenses(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+    expenses = crud.get_expenses(db=db, skip=skip, limit=limit, user_id=current_user.id)
+    return expenses

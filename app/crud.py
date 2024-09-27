@@ -29,3 +29,6 @@ def create_expense(db: Session, expense: schemas.ExpenseCreate, user_id: str):
     db.commit()
     db.refresh(db_expense)
     return db_expense
+
+def get_expenses(db: Session, user_id: str, skip: int = 0, limit: int = 100):
+    return db.query(models.Expense).filter(models.Expense.user_id == user_id).offset(skip).limit(limit).all()
