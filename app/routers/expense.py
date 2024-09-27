@@ -68,23 +68,3 @@ def update_expense(
     db.commit()
     db.refresh(db_expense)
     return db_expense
-
-
-@router.get("/total", response_model=float)
-def total_expense(
-    db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)
-):
-    expenses = crud.get_expenses(db=db, user_id=current_user.id)
-    total = sum([expense.amount for expense in expenses])
-    return total
-
-
-@router.get("/total/{tag}", response_model=float)
-def total_expense_by_tag(
-    tag: schemas.Tag,
-    db: Session = Depends(get_db),
-    current_user: int = Depends(oauth2.get_current_user),
-):
-    expenses = crud.get_expenses(db=db, user_id=current_user.id)
-    total = sum([expense.amount for expense in expenses if expense.tag == tag])
-    return total
