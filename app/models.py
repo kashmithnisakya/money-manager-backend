@@ -11,7 +11,7 @@ from app.database import Base
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(String, primary_key=True, default=uuid4().hex, index=True)
+    id = Column(String, primary_key=True, default=lambda: uuid4().hex, index=True)
     name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
@@ -22,7 +22,7 @@ class User(Base):
 class Expense(Base):
     __tablename__ = "expanses"
 
-    id = Column(String, primary_key=True, default=uuid4().hex, index=True)
+    id = Column(String, primary_key=True, default=lambda: uuid4().hex, index=True)
     user_id = Column(String, ForeignKey("users.id"))
     tag = Column(String)
     amount = Column(Integer)
