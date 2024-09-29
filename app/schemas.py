@@ -14,6 +14,7 @@ class Tag(str, Enum):
 
 
 class UserBase(BaseModel):
+    name: str
     email: EmailStr
 
 
