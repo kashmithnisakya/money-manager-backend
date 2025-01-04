@@ -1,1 +1,1 @@
-# Money Manager Fast-api Backend
+# Money Manager Fast-api Backend with Sqlalchemy and Postgres
